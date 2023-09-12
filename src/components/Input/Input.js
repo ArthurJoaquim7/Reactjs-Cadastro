@@ -86,7 +86,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       <div className={style.card}>
         <form ref={ref} onSubmit={handleSubmit} className={style.form}>
           <img src={add} className={style.add} />
-          <h1 className={style.h1}>CADASTRO</h1>
+          <h1 className={style.h1}><span className={style.fff}>C</span>ADASTRO</h1>
           {/* ========== */}
           <div className={style.firstDiv}>
             <div className={style.nome}>
