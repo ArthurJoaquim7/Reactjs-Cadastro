@@ -83,24 +83,21 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
 
   return (
     <div className={style.container}>
-      <div className={style.card}>
+      {/* <div className={style.card}>
         <form ref={ref} onSubmit={handleSubmit} className={style.form}>
           <img src={add} className={style.add} />
           <h1 className={style.h1}><span className={style.fff}>C</span>ADASTRO</h1>
-          {/* ========== */}
           <div className={style.firstDiv}>
             <div className={style.nome}>
               <img src={user} className={style.icon} />
               <input name="nome" placeholder="Nome" className={style.first} maxLength={12} />
             </div>
-            {/* = */}
             <div className={style.uf}>
               <img src={uf} className={style.icon} />
               <input name="uf" type="name" placeholder="UF ex: SP" className={style.first} maxLength={2} value={texto}
                 onChange={handleInputChange} />
             </div>
           </div>
-          {/* ========== */}
           <div className={style.emailDiv}>
             <img src={email} className={style.icon} />
             <input name="email" type="email" placeholder="E-mail" className={style.last} maxLength={30} />
@@ -111,7 +108,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
           </div>
           <button type="submit" className={style.btn}>SALVAR</button>
         </form>
-      </div>
+      </div> */}
     </div>
 
   );

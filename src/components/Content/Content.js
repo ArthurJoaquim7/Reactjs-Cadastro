@@ -9,6 +9,9 @@ import del from '../img/del.png'
 import edit from '../img/edit.png'
 import user2 from '../img/user2.png'
 import e404 from '../img/404.svg'
+import sorry from '../img/sorry.png'
+import sad from '../img/sad.png'
+import lin from '../img/lin.png'
 
 const Grid = ({ users, setUsers, setOnEdit }) => {
   const handleEdit = (item) => {
@@ -32,7 +35,7 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
   return (
     <div className={style.container}>
       <div className={style.full}>
-        <div className={style.tags}>
+        {/* <div className={style.tags}>
           <div className={style.nomeDiv}>
             <h2 className={`${style.what} ${style.right}`}><span className={style.fff}>N</span>ome</h2>
           </div>
@@ -45,14 +48,20 @@ const Grid = ({ users, setUsers, setOnEdit }) => {
           <div className={style.nomeDiv}>
             <h2 className={`${style.what} ${style.right2}`}><span className={style.fff}>F</span>ONE</h2>
           </div>
-        </div>
+        </div> */}
         {users.length === 0 ? (
           <div className={style.empty}>
-            <h1 className={style.h1}>Crie um <span className={style.purple}>cadastro</span>!</h1>
-            <img src={e404} className={style.e404} />
+            <div className={style.fell}>
+              <h1 className={style.fff}><span className={style.pink}>S</span>into muito...</h1>
+              <img src={sad} className={style.sad} />
+            </div>
+            <h5 className={style.decla}>Estou trabalhando para disponibilizar o link para você pode interagir com o projeto, por enquanto, você pode ver um vídeo breve do resumo do projeto clickando no ícone abaixo.</h5>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7107801763214241792/" target="_blank"><img src={lin} className={style.lin} /></a>
+            <img src={sorry} className={style.sorry} />
+            {/* <h1 className={style.h1}>Crie um <span className={style.purple}>cadastro</span>!</h1>
+            <img src={e404} className={style.e404} /> */}
           </div>
         ) : (
-
           users.map((item, i, o) => (
             <div className={style.all}>
               <div key={i} className={style.cardx}>

@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 50px;
     /* margin: 0;
     margin-top: 10px; */
 
@@ -88,22 +89,64 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+.pink{
+    color: #9c399e;
+}
+.fff {
+    margin: 0;
+}
+
+.sorry {
+    width: 400px;
+    height: auto;
+}
+
+.lin {
+    width: 40px;
+    transition: 0.1s;
+}
+
+.lin:hover {
+    transform: scale(1.2);
+    transition: 0.1s;
 }
 
 .e404 {
     width: 400px;
 }
-.fff{
-    color: #FFF;
+
+.fff {
+    color: #EEEEEE;
 }
+
+.decla {
+    width: 50%;
+    color: #EEEEEE;
+    margin: 0;
+}
+
 .purple {
     color: #9c399e;
 }
 
+.sad {
+    width: 32px;
+    height: 32px;
+}
+
 .h1 {
-    color: #fff;
+    color: #EEEEEE;
     margin: 0;
     margin-top: 10px;
+}
+
+.fell {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ==== REMAST ==== */
@@ -223,6 +266,10 @@ p {
 }
 
 @media screen and (max-width: 980px) {
+    .decla {
+        width: 90%;
+    }
+
     .full {
         border: none;
 
@@ -261,8 +308,20 @@ p {
 }
 
 @media screen and (max-width: 500px) {
+    .sorry {
+        width: 80%;
+    }
+
+    .lin {
+        width: 32px;
+    }
+
     .card {
         width: 80%;
+    }
+
+    .fff {
+        font-size: 22px;
     }
 
     .what {
