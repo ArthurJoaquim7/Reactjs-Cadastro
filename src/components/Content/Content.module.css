@@ -1,75 +1,88 @@
 .container {
-    width: 100%;
+    position: relative;
+    width: 70%;
     height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    gap: 10px;
     flex-direction: column;
-    margin-top: 50px;
-    /* margin: 0;
-    margin-top: 10px; */
-
-
-}
-
-.full {
-    margin-top: 20px;
-    width: 80%;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    border-left: 5px solid #B4B4B4;
-    border-right: 5px solid #B4B4B4;
-    border-radius: 15px;
-    background-color: #1E2127;
-
+    overflow-y: auto;
 }
 
+
+h1,
+h2,
 h3,
-h2 {
+h4,
+p {
+    padding: 0;
     margin: 0;
 }
 
-h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .card {
-    display: none;
+    position: relative;
+    display: flex;
+    width: 550px;
+    height: 250px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right bottom, #02121b, #03141d, #031520, #031722, #031825);
+    transition: 0.2s ease-in-out;
+    color: #E0E0E0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    overflow: hidden;
 }
 
-.user2 {
+.leftCard {
+    width: 25%;
+    padding: 10px;
+}
+
+.imgShow {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.rightCard {
+    width: 75%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.nomeDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.address {
+    display: flex;
+    color: #E0E0E0;
+}
+
+.h3 {
+    font-size: 14px;
+}
+
+.estado {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.bio {
+    color: #bdbdbd;
+}
+
+
+.toolsDiv {
     position: absolute;
     top: 10px;
     right: 10px;
-}
-
-.nome,
-.uf,
-.email,
-.phone {
-    display: flex;
-    gap: 10px;
-}
-
-.nome {
-    flex-wrap: wrap;
-}
-
-.what {
-    color: #9c399e;
-}
-
-.toolsDiv {
-    margin-top: 10px;
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    width: 100%;
-    gap: 15px;
+    gap: 20px;
 }
 
 .tools {
@@ -83,6 +96,15 @@ h3 {
     transition: 0.2s ease-in-out;
 }
 
+/* =================== */
+.user2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+
 .empty {
     width: 100%;
     display: flex;
@@ -91,9 +113,11 @@ h3 {
     justify-content: center;
     position: relative;
 }
-.pink{
+
+.pink {
     color: #9c399e;
 }
+
 .fff {
     margin: 0;
 }
@@ -157,14 +181,6 @@ h3 {
     justify-content: center;
 }
 
-.nomeDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 30%;
-    position: relative;
-}
 
 .right {
     text-align: center;
@@ -184,12 +200,6 @@ h3 {
     border-bottom: 1px solid gray;
 }
 
-.cardx {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
 
 .all {
     display: flex;
@@ -225,120 +235,17 @@ p {
     justify-content: end;
 }
 
-.opt {
-    bottom: 6px;
-    right: 10px;
-    width: 22px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    position: absolute;
-}
-
-.opt:hover {
-    transform: scale(1.2);
-    transition: 0.2s ease-in-out;
-}
-
-.opt2 {
-    bottom: 6px;
-    right: 42px;
-    width: 22px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    position: absolute;
-}
-
-.opt2:hover {
-    transform: scale(1.2);
-    transition: 0.2s ease-in-out;
-}
-
-/*== MOBILE ==*/
-
-@media screen and (max-width: 1142px) {
-    .opt {
-        right: 3px;
-    }
-
-    .opt2 {
-        right: 30px;
+/* =========== MOBILE */
+@media screen and (max-width: 1022px) {
+    .container {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
     }
 }
 
-@media screen and (max-width: 980px) {
-    .decla {
-        width: 90%;
-    }
-
-    .full {
-        border: none;
-
-    }
-
-    .tags {
-        display: none;
-    }
-
-    .cardx {
-        display: none;
-    }
-
+@media screen and (max-width: 565px) {
     .card {
-        display: flex;
-        width: 80%;
-        height: 150px;
-        flex-direction: column;
-        border: 3px solid #B4B4B4;
-        border-radius: 5px;
-        padding: 20px;
-        padding-top: 40px;
-        margin: 20px;
-        position: relative;
-        transition: 0.2s;
+        width: 95%;
     }
-
-    .card:hover {
-        border: 3px solid #fff;
-    }
-
-    .tools {
-        width: 42px;
-    }
-
-}
-
-@media screen and (max-width: 500px) {
-    .sorry {
-        width: 80%;
-    }
-
-    .lin {
-        width: 32px;
-    }
-
-    .card {
-        width: 80%;
-    }
-
-    .fff {
-        font-size: 22px;
-    }
-
-    .what {
-        font-size: 18px;
-    }
-
-    h3 {
-        font-size: 12px;
-    }
-
-    .user2 {
-        width: 40px;
-    }
-
-    .tools {
-        width: 32px;
-    }
-
-
 }

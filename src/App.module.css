@@ -1,0 +1,26 @@
+.App {
+    position: fixed;
+    display: flex;
+    font-family: 'poppins', Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  background-image: url(../src/components/img/bg.svg);
+    background-position: center;
+    background-size: cover; 
+
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 1022px) {
+    .App{
+     display: flex;
+     flex-direction: column;
+    }
+}

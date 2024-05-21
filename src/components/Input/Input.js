@@ -1,15 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import style from '../Input/Input.module.css'
+import style from '../Input/Input.module.css';
 
-//IMG
-import add from '../img/add.png'
-import user from '../img/user.png'
-import email from '../img/email.png'
-import phone from '../img/phone.png'
-import uf from '../img/uf.png'
-
+// IMG
+import add from '../img/add.png';
+import user from '../img/user.png';
+import uf from '../img/uf.png';
+import imgLogo from '../img/imgLogo.png';
+import rua from '../img/rua.png';
+import state from '../img/state.png';
+import bio from '../img/bio.png';
+import bairro from '../img/bairro.png';
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
   const ref = useRef();
@@ -18,9 +20,12 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
     if (onEdit) {
       const user = ref.current;
       user.nome.value = onEdit.nome;
-      user.uf.value = onEdit.uf;
-      user.email.value = onEdit.email;
-      user.fone.value = onEdit.fone;
+      user.idade.value = onEdit.idade;
+      user.rua.value = onEdit.rua;
+      user.bairro.value = onEdit.bairro;
+      user.estado.value = onEdit.estado;
+      user.biografia.value = onEdit.biografia;
+      // Não inicialize o campo de arquivo
     }
   }, [onEdit]);
 
@@ -29,88 +34,106 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
     const user = ref.current;
     if (
       !user.nome.value ||
-      !user.uf.value ||
-      !user.email.value ||
-      !user.fone.value
+      !user.idade.value ||
+      !user.rua.value ||
+      !user.bairro.value ||
+      !user.estado.value ||
+      !user.biografia.value
     ) {
       return toast.warn("Preencha todos os campos!");
     }
+
+    const formData = new FormData();
+    formData.append("nome", user.nome.value);
+    formData.append("idade", user.idade.value);
+    formData.append("rua", user.rua.value);
+    formData.append("bairro", user.bairro.value);
+    formData.append("estado", user.estado.value);
+    formData.append("biografia", user.biografia.value);
+    if (user.imagem.files[0]) {
+      formData.append("imagem", user.imagem.files[0]);
+    } else if (onEdit) {
+      formData.append("imagem", onEdit.imagem);
+    }
+
     if (onEdit) {
       await axios
-        .put("http://localhost:8081/" + onEdit.id, {
-          nome: user.nome.value,
-          uf: user.uf.value,
-          email: user.email.value,
-          fone: user.fone.value,
-        })
+        .put(`http://localhost:8081/${onEdit.id}`, formData)
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
     } else {
       await axios
-        .post("http://localhost:8081", {
-          nome: user.nome.value,
-          uf: user.uf.value,
-          email: user.email.value,
-          fone: user.fone.value,
-        })
+        .post("http://localhost:8081", formData)
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
     }
 
     user.nome.value = "";
-    user.uf.value = "";
-    user.email.value = "";
-    user.fone.value = "";
+    user.idade.value = "";
+    user.rua.value = "";
+    user.bairro.value = "";
+    user.estado.value = "";
+    user.biografia.value = "";
+    user.imagem.value = "";
 
     setOnEdit(null);
     getUsers();
-    setTexto('')
+    setTexto('');
   };
 
-  // ===================
   const [texto, setTexto] = useState('');
 
   const handleInputChange = (e) => {
-    // Obtém o valor do input
     const valorInput = e.target.value;
-
-    // Converte o valor para letras maiúsculas
     const valorEmMaiusculas = valorInput.toUpperCase();
-
-    // Atualiza o estado com o valor em maiúsculas
     setTexto(valorEmMaiusculas);
   };
 
   return (
     <div className={style.container}>
-      {/* <div className={style.card}>
+      <div className={style.card}>
         <form ref={ref} onSubmit={handleSubmit} className={style.form}>
-          <img src={add} className={style.add} />
-          <h1 className={style.h1}><span className={style.fff}>C</span>ADASTRO</h1>
+          <div className={style.title}>
+            <img src={add} alt="image0" className={style.add} />
+            <h1 className={style.h1}><span className={style.fff}>U</span>suários</h1>
+          </div>
           <div className={style.firstDiv}>
             <div className={style.nome}>
-              <img src={user} className={style.icon} />
-              <input name="nome" placeholder="Nome" className={style.first} maxLength={12} />
+              <img src={user} alt="image2" className={style.icon} />
+              <input name="nome" placeholder="Nome" className={style.first} maxLength={20} />
             </div>
             <div className={style.uf}>
-              <img src={uf} className={style.icon} />
-              <input name="uf" type="name" placeholder="UF ex: SP" className={style.first} maxLength={2} value={texto}
-                onChange={handleInputChange} />
+              <img src={uf} alt="image3" className={style.icon} />
+              <input name="idade" type="text" placeholder="Idade" className={style.first} maxLength={3}  />
             </div>
           </div>
           <div className={style.emailDiv}>
-            <img src={email} className={style.icon} />
-            <input name="email" type="email" placeholder="E-mail" className={style.last} maxLength={30} />
+            <img src={rua} alt="image4" className={style.icon} />
+            <input name="rua" type="text" placeholder="Rua" className={style.last} maxLength={32} />
+          </div>
+          <div className={style.firstDiv}>
+            <div className={style.emailDiv}>
+              <img src={bairro} alt="image4" className={style.icon} />
+              <input name="bairro" type="text" placeholder="Bairro" className={style.last} maxLength={20} />
+            </div>
+            <div className={style.emailDiv}>
+              <img src={state} alt="image4" className={style.icon} />
+              <input name="estado" type="text" placeholder="Estado, ex: PE" className={style.last} maxLength={2} />
+            </div>
+          </div>
+          <div className={style.emailDiv}>
+            <img src={bio} alt="image4" className={style.icon} />
+            <textarea name="biografia" cols="30" rows="5" placeholder="Biografia" className={style.last} maxLength={200}></textarea>
           </div>
           <div className={style.phoneDiv}>
-            <img src={phone} className={style.icon} />
-            <input name="fone" type="number" placeholder="Telefone" className={style.last} maxLength={13} />
+            <img src={imgLogo} alt="image5" className={style.icon} />
+            <input name="imagem" type="file" placeholder="Imagem" className={style.last} />
           </div>
           <button type="submit" className={style.btn}>SALVAR</button>
         </form>
-      </div> */}
-    </div>
+      </div>
 
+    </div>
   );
 };
 

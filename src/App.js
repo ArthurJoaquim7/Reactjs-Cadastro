@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
-import './App.css'
+import style from './App.module.css'
 
 
 function App() {
@@ -27,7 +26,7 @@ function App() {
 
   return (
     <>
-      <div className="App">
+      <div className={style.App}>
         <Input onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
         <Content setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
         <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
